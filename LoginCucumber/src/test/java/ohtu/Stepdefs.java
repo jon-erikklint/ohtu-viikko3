@@ -1,5 +1,6 @@
 package ohtu;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -36,4 +37,17 @@ public class Stepdefs {
     public void system_will_respond_with(String expectedOutput) throws Throwable {
         assertTrue(io.getPrints().contains(expectedOutput));
     }
+    
+    @Given("^command new user is selected$")
+    public void command_new_user_is_selected() throws Throwable {
+        inputLines.add("new");
+    }
+
+    @Given("^user \"([^\"]*)\" with password \"([^\"]*)\" is created$")
+    public void user_with_password_is_created(String username, String password) throws Throwable {
+        inputLines.add("new");
+        inputLines.add(username);
+        inputLines.add(password);
+    }
+
 }
